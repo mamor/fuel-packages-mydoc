@@ -53,7 +53,7 @@ Description:
   Database settings must be configured correctly for this to work.
 
 Commands:
-  php oil refine mydoc:html <table_schema> <output_dir>
+  php oil refine mydoc:html <table_schema> <output_dir = "app/tmp/">
   php oil refine mydoc:help
 
 HELP;
@@ -65,7 +65,7 @@ HELP;
 	 *
 	 * Usage (from command line):
 	 *
-	 * php oil refine mydoc:html <table_schema> <output_dir>
+	 * php oil refine mydoc:html <table_schema> <output_dir = "app/tmp/">
 	 */
 	public static function html($table_schema = null, $dir = null)
 	{
@@ -76,7 +76,7 @@ HELP;
 		}
 
 		empty($dir) and $dir = APPPATH.'tmp'.DS;
-		$dir .= 'mydoc'.DS;
+		$dir = rtrim($dir, DS).DS.'mydoc'.DS;
 
 		/**
 		 * connect to db
