@@ -52,6 +52,9 @@ Description:
   Generate MySQL Documentation.
   Database settings must be configured correctly for this to work.
 
+Runtime options:
+  -f, [--force] # Force delete and generate MySQL Documentation that already exist
+
 Commands:
   php oil refine mydoc:html <table_schema> <output_dir = "app/tmp/">
   php oil refine mydoc:help
@@ -88,6 +91,12 @@ HELP;
 		 */
 		if (file_exists($dir))
 		{
+			if ( ! \Cli::option('f') and ! \Cli::option('force'))
+			{
+				\Cli::write(realpath($dir).' already exist, please use -f option to force delete and generate.', 'red');
+				exit();
+			}
+
 			$ret = \File::delete_dir($dir);
 			if ($ret === false)
 			{
