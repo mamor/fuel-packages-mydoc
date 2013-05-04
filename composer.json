@@ -1,0 +1,16 @@
+{
+	"name": "mp-php/fuel-packages-mydoc",
+	"type": "fuel-package",
+	"require": {
+		"composer/installers": "*"
+	},
+	"extra": {
+		"installer-name": "mydoc"
+	},
+	"authors": [
+		{
+			"name": "Mamoru Otsuka"
+		}
+	],
+	"license": "MIT"
+}
